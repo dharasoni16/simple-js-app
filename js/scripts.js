@@ -1,20 +1,32 @@
-alert('Hello World');
-
-// Defining variables with values
-let myName = 'Bob';
-document.write(myName);
-myName = 'John Doe';
-document.write(myName);
-
-// Mathematical Operation
-let simpleAddition = 2 + 2;
-document.write(simpleAddition);
-let size = 100;
-let doubleSize = size * 2;
-document.write(doubleSize);
-let minSize = doubleSize * 2 - size / 2;
-document.write(minSize);
-
-//Practicing variable
-let favoriteFood='IndianFood';
-document.write(favoriteFood);
+let pokemonList = [
+  {
+    name: "Bulbasaur",
+    height: 7,
+    types: ["grass", "poison"],
+    category: "seed",
+  },
+  {
+    name: "Charmander",
+    height: 6,
+    types: ["fire", "blaze"],
+    category: "lizard",
+  },
+  {
+    name: "Squirtle",
+    height: 5,
+    types: ["water", "torrent"],
+    category: "tiny turtle",
+  },
+  {
+    name: "Butterfree",
+    height: 3,
+    types: ["bug", "flying"],
+    category: "butterfly",
+  },
+  {
+    name: "Beedrill",
+    height: 3,
+    types: ["bug", "poison"],
+    category: "poison bee",
+  },
+];
