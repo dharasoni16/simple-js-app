@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+#pokemon-logo {
+  height: 70px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-family: "Lato", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+.card-body {
+  display: flex;
+  height: 80vh;
+  padding: 70px;
+  flex-direction: column;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+.card-footer {
+  text-align: center;
+  height: 6.5vh;
+  background-color: rgb(235, 235, 244);
+}
