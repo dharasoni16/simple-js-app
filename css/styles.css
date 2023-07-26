@@ -11,11 +11,19 @@ body {
   font-family: "Lato", sans-serif;
   font-family: "Work Sans", sans-serif;
 }
+
 .card-body {
-  display: flex;
+  text-align: center;
+  padding-top: 50px;
   height: 80vh;
-  padding: 70px;
-  flex-direction: column;
+
+}
+
+.card-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: justify;
 }
 
 .card-title {
