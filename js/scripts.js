@@ -1,50 +1,62 @@
-let pokemonList = [
-  {
-    name: "Bulbasaur",
-    height: 7,
-    types: ["grass", "poison"],
-    category: "seed",
-  },
-  {
-    name: "Charmander",
-    height: 6,
-    types: ["fire", "blaze"],
-    category: "lizard",
-  },
-  {
-    name: "Squirtle",
-    height: 5,
-    types: ["water", "torrent"],
-    category: "tiny turtle",
-  },
-  {
-    name: "Butterfree",
-    height: 3,
-    types: ["bug", "flying"],
-    category: "butterfly",
-  },
-  {
-    name: "Beedrill",
-    height: 3,
-    types: ["bug", "poison"],
-    category: "poison bee",
-  },
-];
+let pokemonRepository = (function () {
+  let pokemonList = [
+    {
+      name: "Bulbasaur",
+      height: 7,
+      types: ["grass", "poison"],
+      category: "seed",
+    },
+    {
+      name: "Charmander",
+      height: 6,
+      types: ["fire", "blaze"],
+      category: "lizard",
+    },
+    {
+      name: "Squirtle",
+      height: 5,
+      types: ["water", "torrent"],
+      category: "tiny turtle",
+    },
+    {
+      name: "Butterfree",
+      height: 3,
+      types: ["bug", "flying"],
+      category: "butterfly",
+    },
+    {
+      name: "Beedrill",
+      height: 3,
+      types: ["bug", "poison"],
+      category: "poison bee",
+    },
+  ];
 
-//Declaring variables with empty string
-let pokemon = "";
-let text = "";
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
 
-//looping through the Pokemon list arrays
-for (let i = 0; i < pokemonList.length; i++) {
-  //assigning pokemon variable to an instance of pokemon in pokemonList array
-  pokemon = pokemonList[i];
+  function getAll() {
+    return pokemonList;
+  }
 
-  //assigning variable a string to print the list of pokemons on screen
-  text = pokemon.name + " (height: " + pokemon.height + ")";
+  return {
+    add: add,
+    getAll: getAll,
+  };
+})();
 
-  //ternary condition to check pokemon having biggest height and printing the pokemon list on screen
-  pokemon.height >= 7
-    ? document.write(text + " - Wow, that's big!<br>")
-    : document.write(text + "<br>");
+pokemonRepository.add({ name: "pikachu", height: 2 });
+let pokemonArray = pokemonRepository.getAll();
+
+function printArrayDetails(list) {
+  //implementing foreach loop
+  pokemonArray.forEach((pokemon) => {
+    let text = pokemon.name + " (height: " + pokemon.height + ")";
+    pokemon.height >= 7
+      ? document.write(text + " - Wow, that's big!<br>")
+      : document.write(text + "<br>");
+  });
 }
+
+printArrayDetails(pokemonArray);
