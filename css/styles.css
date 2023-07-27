@@ -16,7 +16,6 @@ body {
   text-align: center;
   padding-top: 50px;
   height: 80vh;
-
 }
 
 .card-text {
@@ -27,8 +26,8 @@ body {
 }
 
 .card-title {
-    font-weight: bold;
-    font-size: 24px;
+  font-weight: bold;
+  font-size: 24px;
 }
 .card-footer {
   text-align: center;

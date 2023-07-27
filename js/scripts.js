@@ -53,7 +53,7 @@ let pokemonRepository = (function () {
 // Adding new pokemon to list by calling add function
 pokemonRepository.add({ name: "Pikachu", height: 2 });
 
-// Assigining variable Pokemon object returns by getall function 
+// Assigining variable to Pokemon object returns by getall function
 let pokemonArray = pokemonRepository.getAll();
 
 function printArrayDetails(list) {
