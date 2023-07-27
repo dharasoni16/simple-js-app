@@ -1,3 +1,4 @@
+// Implementing IIFE in javascript
 let pokemonRepository = (function () {
   let pokemonList = [
     {
@@ -32,25 +33,31 @@ let pokemonRepository = (function () {
     },
   ];
 
+  // This function adds new pokemon to pokemon list
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
 
+  // This function returns pokemon list array
   function getAll() {
     return pokemonList;
   }
 
+  // Return objects
   return {
     add: add,
     getAll: getAll,
   };
 })();
 
-pokemonRepository.add({ name: "pikachu", height: 2 });
+// Adding new pokemon to list by calling add function
+pokemonRepository.add({ name: "Pikachu", height: 2 });
+
+// Assigining variable Pokemon object returns by getall function 
 let pokemonArray = pokemonRepository.getAll();
 
 function printArrayDetails(list) {
-  //implementing foreach loop
+  //Implementing foreach loop
   pokemonArray.forEach((pokemon) => {
     let text = pokemon.name + " (height: " + pokemon.height + ")";
     pokemon.height >= 7
