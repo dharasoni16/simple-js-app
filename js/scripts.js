@@ -33,36 +33,64 @@ let pokemonRepository = (function () {
     },
   ];
 
-  // This function adds new pokemon to pokemon list
+  // This function will add new pokemon to the list
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
 
-  // This function returns pokemon list array
+  // This function will return whole pokemon list
   function getAll() {
     return pokemonList;
   }
 
-  // Return objects
+  function addListItem(pokemon) {
+    // Using DOM functions to create and add HTML elements
+    let selectedElement = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("pokemon-name-button");
+    listItem.appendChild(button);
+    //Function called for adding event to button when clicked
+    onclick(button, pokemon);
+    selectedElement.appendChild(listItem);
+  }
+
+  // This function will add the event listener to button
+  function onclick(button, pokemon) {
+    // Adding eventlistner on button click event
+    button.addEventListener("click", () => {
+      showDetails(pokemon);
+    });
+  }
+
+  // This function will execute on button click event
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
+  // IIFE returning objects
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem,
+    showDetails: showDetails,
   };
 })();
 
-// Adding new pokemon to list by calling add function
-pokemonRepository.add({ name: "Pikachu", height: 2 });
-
-// Assigining variable to Pokemon object returns by getall function
+pokemonRepository.add({
+  name: "Pikachu",
+  height: 2,
+  type: "electric",
+  category: "cat",
+});
 let pokemonArray = pokemonRepository.getAll();
 
 function printArrayDetails(list) {
   //Implementing foreach loop
   pokemonArray.forEach((pokemon) => {
-    let text = pokemon.name + " (height: " + pokemon.height + ")";
-    pokemon.height >= 7
-      ? document.write(text + " - Wow, that's big!<br>")
-      : document.write(text + "<br>");
+    //Calling addListItem() with create an add HTML elements using DOM
+    pokemonRepository.addListItem(pokemon);
   });
 }
 
