@@ -29,8 +29,47 @@ body {
   font-weight: bold;
   font-size: 24px;
 }
+
 .card-footer {
   text-align: center;
   height: 6.5vh;
   background-color: rgb(235, 235, 244);
+}
+
+/* Add style for button(created with DOM) displaying pokemon's name */
+.pokemon-name-button {
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  color: white;
+  width: 250px;
+  margin: 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.pokemon-name-button:hover {
+  background-color: rgb(205, 214, 244);
+  color: black;
+}
+
+/* Removing text-decoration on unordered list*/
+.pokemon-list {
+  list-style-type: none;
+}
+
+/* Add styles for small screens (width smaller than 600px)*/
+@media all and (max-width: 600px) {
+  .card-body {
+    padding-top: 25px;
+    height: 75vh;
+  }
+
+  .card-footer {
+    width: 100%;
+    height: 9.5vh;
+  }
+
+  .pokemon-name-button {
+    width: 150px;
+  }
 }
