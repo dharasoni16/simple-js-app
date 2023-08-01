@@ -1,37 +1,7 @@
 // Implementing IIFE in javascript
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {
-      name: "Bulbasaur",
-      height: 7,
-      types: ["grass", "poison"],
-      category: "seed",
-    },
-    {
-      name: "Charmander",
-      height: 6,
-      types: ["fire", "blaze"],
-      category: "lizard",
-    },
-    {
-      name: "Squirtle",
-      height: 5,
-      types: ["water", "torrent"],
-      category: "tiny turtle",
-    },
-    {
-      name: "Butterfree",
-      height: 3,
-      types: ["bug", "flying"],
-      category: "butterfly",
-    },
-    {
-      name: "Beedrill",
-      height: 3,
-      types: ["bug", "poison"],
-      category: "poison bee",
-    },
-  ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   // This function will add new pokemon to the list
   function add(pokemon) {
@@ -48,12 +18,22 @@ let pokemonRepository = (function () {
     let selectedElement = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
     let button = document.createElement("button");
+    let img = document.createElement("img");
     button.innerText = pokemon.name;
     button.classList.add("pokemon-name-button");
     listItem.appendChild(button);
+    button.appendChild(img);
     //Function called for adding event to button when clicked
     onclick(button, pokemon);
     selectedElement.appendChild(listItem);
+    showimg(img, pokemon);
+  }
+
+  // Display pokemon image
+  function showimg(img, pokemon) {
+    loadDetails(pokemon).then(function () {
+      img.src = pokemon.imageUrl;
+    });
   }
 
   // This function will add the event listener to button
@@ -66,32 +46,81 @@ let pokemonRepository = (function () {
 
   // This function will execute on button click event
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
+
+  // Load pokemon list from pokemon API
+  function loadList() {
+    showLoadingMessage();
+    return fetch(apiUrl)
+      .then(function (response) {
+        hideLoadingMessage();
+        return response.json();
+      })
+      .then(function (json) {
+        hideLoadingMessage();
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+        });
+      })
+      .catch(function (e) {
+        hideLoadingMessage();
+        console.error(e);
+      });
+  }
+
+  // Load pokemon details from pokemon API
+  function loadDetails(item) {
+    showLoadingMessage();
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        hideLoadingMessage();
+        return response.json();
+      })
+      .then(function (details) {
+        hideLoadingMessage();
+        // Now we add details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      })
+      .catch(function (e) {
+        hideLoadingMessage();
+        console.log(e);
+      });
+  }
+
+  // Shows loading message before pokemonlist is loaded
+  function showLoadingMessage() {
+    let message = document.getElementById("alert");
+    message.style.display = "block";
+  }
+
+  // Hide the loading message displayed before loading pokemonlist
+  function hideLoadingMessage() {
+    let message = document.getElementById("alert");
+    message.style.display = "none";
   }
 
   // IIFE returning objects
   return {
     add: add,
     getAll: getAll,
+    loadList: loadList,
+    loadDetails: loadDetails,
     addListItem: addListItem,
-    showDetails: showDetails,
   };
 })();
 
-pokemonRepository.add({
-  name: "Pikachu",
-  height: 2,
-  type: "electric",
-  category: "cat",
-});
-let pokemonArray = pokemonRepository.getAll();
-
-function printArrayDetails(list) {
-  //Implementing foreach loop
-  pokemonArray.forEach((pokemon) => {
-    //Calling addListItem() with create an add HTML elements using DOM
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
-}
-
-printArrayDetails(pokemonArray);
+});
