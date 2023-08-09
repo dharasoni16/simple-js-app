@@ -69,21 +69,21 @@ let pokemonRepository = (function () {
       img.attr("alt", "pokemonname");
       let heightElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-          "Height : " +
-          pokemon.height +
-          "</p>"
+        "Height : " +
+        pokemon.height +
+        "</p>"
       );
       let weightElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-          "Weight : " +
-          pokemon.weight +
-          "</p>"
+        "Weight : " +
+        pokemon.weight +
+        "</p>"
       );
       let typesElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-          "Type : " +
-          pokemon.types[0].type.name +
-          "</p>"
+        "Type : " +
+        pokemon.types[0].type.name +
+        "</p>"
       );
 
       modalTitle.append(titleElement);
