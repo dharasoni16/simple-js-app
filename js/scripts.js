@@ -3,7 +3,6 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
   let modalContainer = document.querySelector("#modal-container");
-
   // This function will add new pokemon to the list
   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -36,7 +35,6 @@ let pokemonRepository = (function () {
     showImg(cardImg, pokemon);
     button.appendChild(cardImg);
   }
-
   // Function to display image on button
   function showImg(cardImg, pokemon) {
     loadDetails(pokemon).then(function () {
