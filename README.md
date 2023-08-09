@@ -1,6 +1,6 @@
-# Pokedex App
+# Simple Js App
 
-Pokedex App is a project made using javascript and Bootstrap.It displays the list of pokemon which is fetched from public pokemon API.When you click on any pokemon name a modal will open containing height,weight and larger image of pokemon.
+Simple Js App is a Pokemon project made using javascript and Bootstrap.It displays the list of pokemon which is fetched from public pokemon API.When you click on any pokemon name a modal will open containing height,weight and larger image of pokemon.
 
 ## Installation
 
