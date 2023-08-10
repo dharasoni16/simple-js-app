@@ -3,6 +3,7 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
   let modalContainer = document.querySelector("#modal-container");
+
   // This function will add new pokemon to the list
   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -35,6 +36,7 @@ let pokemonRepository = (function () {
     showImg(cardImg, pokemon);
     button.appendChild(cardImg);
   }
+
   // Function to display image on button
   function showImg(cardImg, pokemon) {
     loadDetails(pokemon).then(function () {
@@ -69,21 +71,21 @@ let pokemonRepository = (function () {
       img.attr("alt", "pokemonname");
       let heightElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-        "Height : " +
-        pokemon.height +
-        "</p>"
+          "Height : " +
+          pokemon.height +
+          "</p>"
       );
       let weightElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-        "Weight : " +
-        pokemon.weight +
-        "</p>"
+          "Weight : " +
+          pokemon.weight +
+          "</p>"
       );
       let typesElement = $(
         "<p class='list-group-item list-group-item-primary'>" +
-        "Type : " +
-        pokemon.types[0].type.name +
-        "</p>"
+          "Type : " +
+          pokemon.types[0].type.name +
+          "</p>"
       );
 
       modalTitle.append(titleElement);
