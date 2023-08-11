@@ -40,6 +40,7 @@ to discuss what you would like to change.
 ## Acknowledgment
 Want to thanks different public resources which I used as a reference to make these project
 #### https://pokeapi.co/
+#### https://getbootstrap.com/
 #### https://www.pokemon.com/us/pokedex
 #### https://pokedex.org/
 
