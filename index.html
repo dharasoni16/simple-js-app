@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simple Js App</title>
+  <link rel="icon" type="image/png" href="img/favicon-32x32.png" />
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,9 +24,6 @@
       <a class="navbar-brand"><img src="img/Pokemon-Logo.png" id="pokemon-logo" alt="Pokemon-Logo" /></a>
     </div>
   </nav>
-  <div class="alert alert-primary" role="alert" id="alert">
-    Pokemon list is loading please-wait
-  </div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -34,14 +32,22 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-center">
-          ...
-        </div>
+        <div class="modal-body text-center">...</div>
       </div>
     </div>
   </div>
   <div class="card-body">
-    <img src="img/pokemon-logo-heading.png" alt="pokemonlistheading" class="card-title">
+    <img src="img/pokemon-logo-heading.png" alt="pokemonlistheading" class="card-title" />
+    <form class="d-flex justify-content-center">
+      <input class="form-control form-control-sm w-25 me-2 p-2" type="search" placeholder="Search" aria-label="Search"
+        id="search" />
+      <img src="img/search icon.png" alt="serach-icon" />
+    </form>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary text-center" role="status" id="spinner">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <ul class="list-group pokemon-list list-unstyled"></ul>
   </div>
   <div class="card-footer text-center">

@@ -96,14 +96,14 @@ let pokemonRepository = (function () {
 
   // Load pokemon list from pokemon API
   function loadList() {
-    showLoadingMessage();
+    showLoadingSpinner();
     return fetch(apiUrl)
       .then(function (response) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         return response.json();
       })
       .then(function (json) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -113,22 +113,22 @@ let pokemonRepository = (function () {
         });
       })
       .catch(function (e) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         console.error(e);
       });
   }
 
   // Load pokemon details from pokemon API
   function loadDetails(item) {
-    showLoadingMessage();
+    showLoadingSpinner();
     let url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         return response.json();
       })
       .then(function (details) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         // Now we add details to the item
         item.imageUrl = details.sprites.other.dream_world.front_default;
         item.height = details.height;
@@ -137,21 +137,40 @@ let pokemonRepository = (function () {
         item.CardImgUrl = details.sprites.front_default;
       })
       .catch(function (e) {
-        hideLoadingMessage();
+        hideLoadingSpinner();
         console.log(e);
       });
   }
 
-  // Shows loading message before pokemonlist is loaded
-  function showLoadingMessage() {
-    let message = document.getElementById("alert");
-    message.style.display = "block";
+  // Shows loading spinner before pokemonlist is loaded
+  function showLoadingSpinner() {
+    let spinner = document.getElementById("spinner");
+    spinner.style.display = "block";
   }
 
-  // Hide the loading message displayed before loading pokemonlist
-  function hideLoadingMessage() {
-    let message = document.getElementById("alert");
-    message.style.display = "none";
+  // Hide the spinner displayed before loading pokemonlist
+  function hideLoadingSpinner() {
+    let spinner = document.getElementById("spinner");
+    spinner.style.display = "none";
+  }
+
+  // Search the pokemon from the pokemonlist
+  document.querySelector("#search").addEventListener("input", function () {
+    let searchpokemon = document.getElementById("search").value.toLowerCase();
+    filterPokemon(searchpokemon);
+  });
+
+  function filterPokemon(searchpokemon) {
+    let selectedElement = document.querySelector(".pokemon-list");
+    selectedElement.innerHTML = "";
+
+    let filteritem = pokemonList.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(searchpokemon);
+    });
+
+    filteritem.forEach((pokemon) => {
+      addListItem(pokemon);
+    });
   }
 
   // IIFE returning objects
