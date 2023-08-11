@@ -48,6 +48,7 @@ body {
   border: 2px solid rgb(1, 101, 252);
   color: blue;
   font-weight: bold;
+  font-size: 21px;
 }
 
 .pokemon-name-button:hover {
