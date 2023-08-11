@@ -14,10 +14,10 @@ Simple Js App is a Pokemon project made using javascript and Bootstrap.It displa
 - Bootstrap
 * JavaScript
 + Code Linters used are :
-++ HTMLHINT
-++ stylelint
-++ ESLint
-++ Prettier
+  - HTMLHINT
+  - stylelint
+  - ESLint
+  - Prettier
 
 ## Installation
 
